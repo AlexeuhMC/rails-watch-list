@@ -3,7 +3,7 @@
 
 <h2><%= @list.name %></h2>
 
-<%= cl_image_tag @list.photo.key, height: 400, width: 400, crop: :fill %>
+<%= @list.photo.attached? %>
 
 <ul class="list-group">
   <% @list.bookmarks.each do |bookmark| %>
@@ -11,9 +11,10 @@
     <li class="list-group-item"><%= bookmark.movie.overview %></li>
     <li class="list-group-item"><%= bookmark.movie.poster_url %></li>
     <li class="list-group-item"><%= bookmark.movie.rating %></li>
-     <%= link_to 'New Bookmark', new_list_bookmark_path %>
-     <%= link_to "Remove", bookmark_path(bookmark),method: :delete, data: { confirm: "Are you sure?" } %>
+     <%= link_to 'New Bookmark', new_list_bookmark_path(@list) %>
+     <%= link_to "Remove", list_bookmark_path(bookmark),method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
 </ul>
+
 <%= link_to 'New Bookmark', new_list_bookmark_path(@list) %>
 <h2><%= link_to 'Index Lists', root_path %></h2>
