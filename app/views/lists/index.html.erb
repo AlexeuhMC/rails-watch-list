@@ -2,8 +2,7 @@
 
 <% @lists.each do |list| %>
   <h2><%= link_to list.name, list_path(list) %></h2>
+  <%= cl_image_tag list.photo.key, height: 400, width: 400, crop: :fill %>
 <% end %>
-
-<%= cl_image_tag("vrdr7covttqwdpqysrxl", width: 400, height: 300, crop: :fill) %>
 
 <h2><%= link_to 'New List', new_list_path %></h2>
